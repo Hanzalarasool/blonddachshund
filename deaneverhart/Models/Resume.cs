@@ -84,5 +84,6 @@ namespace deaneverhart.Models
         // ______________________________________
 
         public ICollection<Experience>? Experiences { get; set; }
+        public ICollection<ResumeExperience>? ResumeExperiences { get; set; }
     }
 }

@@ -49,7 +49,7 @@ namespace deaneverhart.Controllers
                 .Include(s => s.ResumeExperiences)
                 .ThenInclude(e => e.Experience)
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.ID == id);
+            .FirstOrDefaultAsync(m => m.Id == id);
 
 
             //var resume = await _context.Resume
