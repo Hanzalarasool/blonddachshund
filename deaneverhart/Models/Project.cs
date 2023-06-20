@@ -1,18 +1,20 @@
-﻿namespace deaneverhart.Data
+﻿namespace deaneverhart.Models
 {
     public class Project
     {
         public int Id { get; set; }
 
-        public string Item { get; set; }
+        public string? Item { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string GitHub { get; set; }
+        public string? GitHub { get; set; }
 
-        public string URL { get; set; }
+        public string? URL { get; set; }
 
         // _________________________________
+
+        public string? Tag { get; set; }
 
         public int? Sort1 { get; set; }
 

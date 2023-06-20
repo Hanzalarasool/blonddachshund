@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using deaneverhart.Data;
 
@@ -11,9 +12,10 @@ using deaneverhart.Data;
 namespace deaneverhart.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230619160653_ModifyDateTime01")]
+    partial class ModifyDateTime01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace deaneverhart.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("deaneverhart.Models.Experience", b =>
+            modelBuilder.Entity("deaneverhart.Data.Experience", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +60,7 @@ namespace deaneverhart.Data.Migrations
                     b.ToTable("Experience");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Project", b =>
+            modelBuilder.Entity("deaneverhart.Data.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +105,7 @@ namespace deaneverhart.Data.Migrations
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Resume", b =>
+            modelBuilder.Entity("deaneverhart.Data.Resume", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -182,30 +184,7 @@ namespace deaneverhart.Data.Migrations
                     b.ToTable("Resume");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.ResumeExperience", b =>
-                {
-                    b.Property<int>("ResumeExperienceID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ResumeExperienceID"), 1L, 1);
-
-                    b.Property<int>("ExperienceID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResumeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ResumeExperienceID");
-
-                    b.HasIndex("ExperienceID");
-
-                    b.HasIndex("ResumeID");
-
-                    b.ToTable("ResumeExperience");
-                });
-
-            modelBuilder.Entity("deaneverhart.Models.Technology", b =>
+            modelBuilder.Entity("deaneverhart.Data.Technology", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -446,42 +425,23 @@ namespace deaneverhart.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Experience", b =>
+            modelBuilder.Entity("deaneverhart.Data.Experience", b =>
                 {
-                    b.HasOne("deaneverhart.Models.Resume", null)
+                    b.HasOne("deaneverhart.Data.Resume", null)
                         .WithMany("Experiences")
                         .HasForeignKey("ResumeId");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Project", b =>
+            modelBuilder.Entity("deaneverhart.Data.Project", b =>
                 {
-                    b.HasOne("deaneverhart.Models.Technology", null)
+                    b.HasOne("deaneverhart.Data.Technology", null)
                         .WithMany("Projects")
                         .HasForeignKey("TechnologyId");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.ResumeExperience", b =>
+            modelBuilder.Entity("deaneverhart.Data.Technology", b =>
                 {
-                    b.HasOne("deaneverhart.Models.Experience", "Experience")
-                        .WithMany()
-                        .HasForeignKey("ExperienceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("deaneverhart.Models.Resume", "Resume")
-                        .WithMany()
-                        .HasForeignKey("ResumeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Experience");
-
-                    b.Navigation("Resume");
-                });
-
-            modelBuilder.Entity("deaneverhart.Models.Technology", b =>
-                {
-                    b.HasOne("deaneverhart.Models.Experience", null)
+                    b.HasOne("deaneverhart.Data.Experience", null)
                         .WithMany("Technologies")
                         .HasForeignKey("ExperienceId");
                 });
@@ -537,17 +497,17 @@ namespace deaneverhart.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Experience", b =>
+            modelBuilder.Entity("deaneverhart.Data.Experience", b =>
                 {
                     b.Navigation("Technologies");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Resume", b =>
+            modelBuilder.Entity("deaneverhart.Data.Resume", b =>
                 {
                     b.Navigation("Experiences");
                 });
 
-            modelBuilder.Entity("deaneverhart.Models.Technology", b =>
+            modelBuilder.Entity("deaneverhart.Data.Technology", b =>
                 {
                     b.Navigation("Projects");
                 });

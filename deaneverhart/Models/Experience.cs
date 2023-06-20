@@ -1,14 +1,16 @@
-﻿namespace deaneverhart.Data
+﻿namespace deaneverhart.Models
 {
-    public class Technology
+    public class Experience
     {
+
+
         public int Id { get; set; }
 
         public string? Item { get; set; }
 
-        public string? URL { get; set; }
+        // ______________________________________
 
-        // _________________________________
+        public string? Tag { get; set; }
 
         public int? Sort1 { get; set; }
 
@@ -20,5 +22,6 @@
 
         // ______________________________________
 
+        public ICollection<Technology>? Technologies { get; set; }
     }
 }

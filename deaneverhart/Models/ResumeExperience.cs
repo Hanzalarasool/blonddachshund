@@ -1,15 +1,14 @@
 ﻿using System.Diagnostics;
 
-namespace deaneverhart.Data
+namespace deaneverhart.Models
 {
     public class ResumeExperience
     {
-        {
         public int ResumeExperienceID { get; set; }
         public int ResumeID { get; set; }
         public int ExperienceID { get; set; }
 
-// _________________________________________________
+        // _________________________________________________
 
         public Resume? Resume { get; set; }
         public Experience? Experience { get; set; }
