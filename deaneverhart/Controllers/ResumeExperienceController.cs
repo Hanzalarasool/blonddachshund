@@ -49,8 +49,8 @@ namespace deaneverhart.Controllers
         // GET: ResumeExperience/Create
         public IActionResult Create()
         {
-            ViewData["ExperienceID"] = new SelectList(_context.Experience, "Id", "Company");
-            ViewData["ResumeID"] = new SelectList(_context.Resume, "Id", "Item");
+            ViewData["ExperienceID"] = new SelectList(_context.Experience, "Id", "Item");
+            ViewData["ResumeID"] = new SelectList(_context.Resume, "Id", "Company");
             return View();
         }
 
